@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "lib": [
+      "es2018",
+      "esnext.asynciterable"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "paths": {
+      "@services/*": ["services/*"],
+      "@repositories/*": ["repositories/*"],
+      "@errors/*": ["errors/*"],
+      "@entities/*": ["database/entities/*"]
+    },
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  }
+}
