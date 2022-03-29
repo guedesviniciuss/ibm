@@ -116,7 +116,7 @@ A api foi desenvolvida com a arquitetura REST, dessa maneira as possuem recursos
 
 ### Create book
 
-``POST {uri}/book``
+``POST {uri}/bookss``
 
 ````
 {
@@ -130,7 +130,7 @@ A api foi desenvolvida com a arquitetura REST, dessa maneira as possuem recursos
 
 ### Update book
 
-``POST {uri}/book/:id``
+``POST {uri}/books/:id``
 
 exemplo de uso:
 
@@ -147,7 +147,7 @@ Corpo da requisição:
 
 ### Delete book
 
-``DELETE {uri}/book/:id``
+``DELETE {uri}/books/:id``
 
 exemplo de uso:
 
@@ -155,7 +155,7 @@ http://localhost:3000/book/95d78c81-a6ec-4bc8-b381-f7c6dfca1269
 
 ### List books
 
-``GET {uri}/book/:id``
+``GET {uri}/books/:id``
 
 exemplo de uso:
 
@@ -164,7 +164,7 @@ http://localhost:3000/book/95d78c81-a6ec-4bc8-b381-f7c6dfca1269
 
 ### Find an specific book
 
-``GET {uri}/book/:id``
+``GET {uri}/books/:id``
 
 exemplo de uso:
 
