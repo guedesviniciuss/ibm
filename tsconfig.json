@@ -25,6 +25,6 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "allowJs": true
+    // "allowJs": true //DESCOMENTE PARA RODAR TESTES
   }
 }

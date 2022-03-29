@@ -1,23 +1,14 @@
-#Docker File for Quota
-FROM node:12.14.1-alpine3.10
+FROM node:alpine
 
-LABEL maintainer="IBM"
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+WORKDIR /usr/app
 
-WORKDIR /home/node/app
+COPY package.json ./
 
-COPY ./package*.json ./
-
-RUN npm install -g pm2
 RUN npm install
 
-COPY ./src .
+COPY . .
 
-# COPY --chown=node:node ./code .
-
-RUN npm run build
-
-EXPOSE 80
+EXPOSE 3333
 
 ENTRYPOINT ["sh", "./entrypoint.sh"]
