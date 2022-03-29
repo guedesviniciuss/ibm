@@ -1,6 +1,8 @@
 import { getRepository, Repository } from 'typeorm';
 import IBookRepository from '../interfaces/IBookRepository';
-import { ICreateBookDTO, IPaginationDTO, IUpdateBookDTO } from '../dtos/IBookDTO';
+import {
+  ICreateBookDTO, IPaginationDTO, IReturnPaginateDTO, IUpdateBookDTO,
+} from '../dtos/IBookDTO';
 
 import Book from '../../database/entities/Book';
 
@@ -20,15 +22,18 @@ class BookRepository implements IBookRepository {
     await this.repository.delete(id);
   }
 
-  async listBooksName({ page = 1, limit = 3 }: IPaginationDTO): Promise<Book[]> {
-    const books = await this.repository
-      .createQueryBuilder('book')
-      .select(['book.name'])
+  async listBooksName({ page = 0, limit = 3 }: IPaginationDTO): Promise<IReturnPaginateDTO> {
+    const [result, total] = await this.repository
+      .createQueryBuilder('books')
+      .select(['books.id', 'books.name'])
       .skip(page)
       .take(limit)
-      .getMany();
+      .getManyAndCount();
 
-    return books;
+    return {
+      data: result,
+      total,
+    };
   }
 
   async create({
@@ -70,7 +75,7 @@ class BookRepository implements IBookRepository {
   }
 
   async findBySbn(sbn: string): Promise<Book | undefined> {
-    const book = await this.repository.findOne({ sbn });
+    const book = await this.repository.findOne({ where: { sbn } });
     return book;
   }
 }

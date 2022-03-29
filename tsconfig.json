@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "target": "es2018",
+    "module": "commonjs",
     "lib": [
       "es2018",
       "esnext.asynciterable"
     ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "module": "commonjs",
     "rootDir": "./src",
     "baseUrl": "./src",
     "paths": {
@@ -22,6 +22,9 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "allowJs": true
   }
 }

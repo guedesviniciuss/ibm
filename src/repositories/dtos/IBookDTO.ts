@@ -1,3 +1,5 @@
+import Book from '@entities/Book';
+
 interface ICreateBookDTO {
   sbn: string;
   name: string;
@@ -18,4 +20,11 @@ interface IPaginationDTO {
   limit?: number;
 }
 
-export { ICreateBookDTO, IUpdateBookDTO, IPaginationDTO };
+interface IReturnPaginateDTO {
+  data: Book[],
+  total: number,
+}
+
+export {
+  ICreateBookDTO, IUpdateBookDTO, IPaginationDTO, IReturnPaginateDTO,
+};

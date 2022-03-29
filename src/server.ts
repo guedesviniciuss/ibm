@@ -7,9 +7,11 @@ import './containers';
 import express, { NextFunction, Request, Response } from 'express';
 import figlet from 'figlet';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 
-import AppError from 'errors/AppError';
+import AppError from '@errors/AppError';
 import routes from './routes';
+import swaggerFile from './swagger.json';
 
 const PORT = process.env.PORT || 3000;
 const API_NAME = process.env.API_NAME || 'example';
@@ -19,6 +21,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(
   (err: Error, request: Request, response: Response, _: NextFunction) => {
