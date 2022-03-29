@@ -112,11 +112,11 @@ docker-compose up
 
 ## 💻 Exemplos de uso
 
-A api foi desenvolvida com a arquitetura REST, dessa maneira as possuem recursos únicos que atendem a somente uma finalidade. Para utilizar o unico recurso desenvolvido por essa api, basta enviar uma requisição do tipo query, com os seguintes dados:
+A api foi desenvolvida com a arquitetura REST, dessa maneira as possuem recursos especificos que atendem a somente uma finalidade. Para utilizar esses recursos utilize os verbos HTTP:
 
 ### Create book
 
-``POST {uri}/bookss``
+``POST {uri}/books``
 
 ````
 {
