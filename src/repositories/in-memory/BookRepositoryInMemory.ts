@@ -1,7 +1,9 @@
 /* eslint-disable no-shadow */
-import { ICreateBookDTO, IUpdateBookDTO, IPaginationDTO } from 'repositories/dtos/IBookDTO';
+import Book from '@entities/Book';
+import {
+  ICreateBookDTO, IUpdateBookDTO, IPaginationDTO, IReturnPaginateDTO,
+} from 'repositories/dtos/IBookDTO';
 import IBookRepository from 'repositories/interfaces/IBookRepository';
-import Book from '../../database/entities/Book';
 
 class BookRepositoryInMemory implements IBookRepository {
   books: Book[] = [];
@@ -39,9 +41,13 @@ class BookRepositoryInMemory implements IBookRepository {
     return this.books[indexBook];
   }
 
-  async listBooksName({ page = 1, limit = 5 }: IPaginationDTO): Promise<Book[]> {
-    const list = this.books.slice((page - 1) * limit, page * limit);
-    return list;
+  async listBooksName({ page = 1, limit = 5 }: IPaginationDTO): Promise<IReturnPaginateDTO> {
+    const result = this.books.slice((page - 1) * limit, page * limit);
+
+    return {
+      data: result,
+      total: this.books.length,
+    };
   }
 
   async findById(id: string): Promise<Book | undefined> {

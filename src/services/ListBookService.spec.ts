@@ -20,8 +20,7 @@ describe('List names of books', () => {
     await bookRepositoryInMemory.create(book4);
     await bookRepositoryInMemory.create(book5);
 
-    const all = await listBookService.execute({ page: 1, limit: 2 });
-
-    expect(all).toHaveLength(2);
+    const { data } = await listBookService.execute({ page: 1, limit: 2 });
+    expect(data).toHaveLength(2);
   });
 });
